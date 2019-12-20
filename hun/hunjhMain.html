@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>混江湖｜主页</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="css/bootstrap-theme.min.css"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/gameJavaScript/gGlobal.js"></script>
+<script src="js/gameJavaScript/gMain.js"></script>
+<script src="js/gameJavaScript/gThread.js"></script>
+<script src="js/gameJavaScript/gHuner.js"></script>
+<script src="js/gameJavaScript/gDay.js"></script>
+<script src="js/gameJavaScript/gJob.js"></script>
+<script src="js/gameJavaScript/gBet.js"></script>
+<script src="js/gameJavaScript/gEnjoy.js"></script>
+<script src="js/gameJavaScript/gStock.js"></script>
+<script src="js/gameJavaScript/gHorseHouse.js"></script>
+<script src="js/gameJavaScript/gGirl.js"></script>
+<script src="js/gameJavaScript/gRandomEvents.js"></script>
+<script src="js/gameJavaScript/gScore.js"></script>
+<script src="js/gameJavaScript/gFile.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="page-header">
+					<h2>混江湖  <small>（男侠版）</small></h2>
+				</div>
+			</div>
+			<div class="col-md-6 column">
+				<div class="page-header">
+					<h2>基本状态</h2>
+				</div>
+				<table class="table">
+					<tbody>
+						<tr class="success"><td>健康</td><td id="gHealth">0</td></tr>
+						<tr class="success"><td>金钱</td><td id="gMoney">0</td></tr>
+						<tr class="success"><td>投资财富</td><td id="gInvest">0</td></tr>
+						<tr class="success"><td>能力才干</td><td id="gAbility">0</td></tr>
+						<tr class="success"><td>江湖经验</td><td id="gExperience">0</td></tr>
+						<tr class="success"><td>快乐</td><td id="gHappiness">0</td></tr>
+						<tr class="success"><td>正气</td><td id="gRighteousness">0</td></tr>
+						<tr class="success"><td>人脉</td><td id="gRepute">0</td></tr>												
+					</tbody>
+				</table>
+				<table class="table">
+					<tbody>
+						<tr class="success"><td>车马</td><td id="gHorse"></td></tr>
+						<tr class="success"><td>田宅</td><td id="gHouse"></td></tr>
+						<tr class="success"><td>红颜</td><td id="gGirl"></td></tr>
+						<tr class="success"><td>工作</td><td id="gJob"></td></tr>
+					</tbody>
+				</table>
+				<h5>今天还剩<a id="gHour">6</a>时辰</h5>
+				<h5>游戏还剩<a id="gDayNum">10</a>天</h5>
+				<button type="button" class="btn btn-default btn-block btn-success" id="gBtnNextDayUI" onclick="gCurThread.gNextDay()">进入下一天</button>
+			</div>
+			<div class="col-md-6 column">
+				<div class="page-header">
+					<h2>每日安排</h2>
+				</div>
+				<h3>混在江湖</h3>
+				<a href="#modal-container-000001" data-toggle="modal" class="btn btn-block btn-success btn-lg" id="gBtnJob">混口饭吃</a>
+				<a href="#modal-container-000002" data-toggle="modal" class="btn btn-block btn-success btn-lg" id="gBtnFun">逍遥快活</a>
+				<a href="#modal-container-000003" data-toggle="modal" class="btn btn-block btn-success btn-lg disabled">暂不开放</a>
+				<a href="#modal-container-000004" data-toggle="modal" class="btn btn-block btn-success btn-lg" id="gBtnInvest">钱能生钱</a>
+				<a href="#modal-container-000005" data-toggle="modal" class="btn btn-block btn-success btn-lg" id="gBtnBet">赌一把</a>
+				<h3>混得不错</h3>
+				<a href="#modal-container-000006" data-toggle="modal" type="button" class="btn btn-block btn-lg btn-success" id="gBtnBuyHorse">车马排场</a>				
+				<a href="#modal-container-000007" data-toggle="modal" class="btn btn-block btn-lg btn-success" id="gBtnBuyHouse">置地购房</a>
+				<a href="#modal-container-000008" data-toggle="modal" type="button" class="btn btn-block btn-lg btn-success" id="gBtnBuyGirl">食色性也</a>
+				<table class="table table-condensed table-hover">
+					<tbody>
+						<tr><td><h5>名字 <small>输入名字，开始游戏</small></h5></td></tr>
+						<tr><td>
+							<div class="form-group">
+								<div class="col-sm-6"><input type="text" class="form-control" id="gCurHunerName" /></div>
+								<div class="col-sm-3"><button type="button" class="btn btn-block btn-success" onclick="startOrReloadGame()">开始/重置</button></div>
+								<div class="col-sm-3"><button type="button" class="btn btn-block btn-success" onclick="gScore.gGetRankList()">排行榜</button></div>
+							</div>										
+						</td></tr>
+						<tr><td><h5 class="pull-right"><small>微博@小流氓的小风雅</small></h5></td></tr>
+						<tr><td><h5 class="pull-right"><small>仅测试版，欢迎提出意见和错误，谢谢大家</small></h5></td></tr>
+						<tr><td><h5 class="pull-right"><small>前端可完成除分数提交全部功能，开源可保存本地玩。</small></h5></td></tr>
+						<tr><td><h5 class="pull-right"><small>本人是前端小白，现学的HTML和JavaScript，还请不要取笑，用最笨的方法写的。(✿◡‿◡)</small></h5></td></tr>
+						<tr><td><h5 class="pull-right"><small>数据来源于网络或想象，与游戏出入肯定的，分数仅供参考。(✿◡‿◡)</small></h5></td></tr>
+						<tr><td><h5 class="pull-right"><small>风敲竹·烟花三月 孙思邈 小血河，欢迎交流O(∩_∩)O</small></h5></td></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal fade" id="modal-container-000001" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">混口饭吃</h4>
+							<h5>每次消耗0个时辰，每日限1次</h5>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed table-hover table-bordered">
+								<tbody>
+									<tr>
+										<td><h5>码头搬货小工	<small class="text-warning">每天工钱300金钱</small></h5><p>最底层的出卖体力的工作，只要有手有脚都可以做，工资微薄勉强糊口。</p></td>
+										<td><button class="btn btn-block btn-success btn-xs" onclick="gJob.gApply(1)">应聘</button></td>
+									</tr>
+									<tr>
+										<td><h5>御街天桥下卖艺人 <small class="text-warning">每天工钱600金钱</small></h5><p>喷火吞剑睡钉板，玩蛇耍猴变鸽子，胸口碎大石，徒手断砖块。</p></td>
+										<td><button class="btn btn-block btn-success btn-xs" onclick="gJob.gApply(2)">应聘</button></td>
+									</tr>									
+									<tr>
+										<td><h5>三合楼厨工 <small class="text-warning">每天工钱1200金钱</small></h5><p>劈柴生火，切菜洗碗，递盐送勺，扫地擦桌，总之主厨让你做啥你就得做啥。</p></td>
+										<td><button class="btn btn-block btn-success btn-xs" onclick="gJob.gApply(3)">应聘</button></td>
+									</tr>
+									<tr>
+										<td><h5>神威镖局库管 <small class="text-warning">每天工钱2000金钱</small></h5><p>库房里的那些刀枪剑戟斧钺钩叉，你都要一一清点入册，闲下来还得打扫卫生。</p></td>
+										<td><button class="btn btn-block btn-success btn-xs" onclick="gJob.gApply(4)">应聘</button></td>
+									</tr>
+									<tr>
+										<td><h5>六扇门藏机阁阁主 <small class="text-warning">每天工钱3200金钱</small></h5><p>名为阁主却是劳碌命。数不清的卷宗要分类摆放，眼要瞎，腰要断，心太累。</p></td>
+										<td><button class="btn btn-block btn-success btn-xs" onclick="gJob.gApply(5)">应聘</button></td>
+									</tr>
+									<tr>
+										<td><h5>万象楼副楼主 <small class="text-warning">每天工钱5000金钱</small></h5><p>名头很响亮，是为了收保护费时唬得住人。当然，并不是所有人都会把你放在眼里的。</p></td>
+										<td><button class="btn btn-block btn-success btn-xs" onclick="gJob.gApply(6)">应聘</button></td>
+									</tr>																																				
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>
+			<div class="modal fade" id="modal-container-000002" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">逍遥快活</h4>
+							<h5>每次消耗1个时辰</h5>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed table-hover table-bordered">
+								<tbody>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(1)">用热血证明青春价值<span class="text-warning"> 赚5000钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(2)">去路边吃福建小吃<span class="text-warning"> 花150钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(3)">去太学馆读书<span class="text-warning"> 花200钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(4)">去温氏武馆习武<span class="text-warning"> 花300钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(5)">去勾栏瓦肆听书看戏<span class="text-warning"> 花600钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(6)">去三合楼小酌<span class="text-warning"> 花800钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(7)">去大相国寺参禅<span class="text-warning"> 花900钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(8)">去西大街买买买<span class="text-warning"> 花1500钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(9)">去甜水巷享受人生<span class="text-warning"> 花3000钱</span></button></td></tr>
+									<tr><td><button class="btn btn-block btn-success btn-lg" onclick="gEnjoy.gStartEnjoy(10)">打个小盹儿<span class="text-warning"> 花1钱</span></button></td></tr>																																				
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>
+			<div class="modal fade" id="modal-container-000004" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">赌一把</h4>
+							<h5>每次消耗0个时辰，每日限1次</h5>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed table-hover table-bordered">
+								<tbody>
+									<tr>
+										<td><h5>关东粮商 <small class="text-warning" id="gInvest1">未投资</small> <small id="gInvestRate1" class="text-danger">0</small></h5><p>粮食是民生之本，盈利比较稳定。</p></td>
+										<td>
+											<div class="form-group">
+												<div class="col-sm-5"><input type="text" class="form-control" id="gNumStock1" /></div>
+												<div class="col-sm-3"><button class="btn btn-success" onclick="gStock.gBuyOrSellStock(1,1)">买入</button></div>
+												<div class="col-sm-3"><button class="btn btn-success" onclick="gStock.gBuyOrSellStock(2,1)">卖出</button></div>
+											</div>										
+										</td>
+									</tr>
+									<tr>
+										<td><h5>甜水巷 <small class="text-warning" id="gInvest2">未投资</small> <small id="gInvestRate2" class="text-danger">0</small></h5><p>甜水巷嘛，金主都是一波一波来的。</p></td>
+										<td>											
+											<div class="form-group">
+												<div class="col-sm-5"><input type="text" class="form-control" id="gNumStock2" /></div>
+												<div class="col-sm-3"><button class="btn btn-success" onclick="gStock.gBuyOrSellStock(1,2)">买入</button></div>
+												<div class="col-sm-3"><button class="btn btn-success" onclick="gStock.gBuyOrSellStock(2,2)">卖出</button></div>
+											</div>
+										</td>
+									</tr>									
+									<tr>
+										<td><h5>神威镖局 <small class="text-warning" id="gInvest3">未投资</small> <small id="gInvestRate3" class="text-danger">0</small></h5><p>神威镖局可不是一般的小毛贼敢惹的，但是江湖上杀人越货的事儿也很常见。</p></td>
+										<td>											
+											<div class="form-group">
+												<div class="col-sm-5"><input type="text" class="form-control" id="gNumStock3" /></div>
+												<div class="col-sm-3"><button class="btn btn-success" onclick="gStock.gBuyOrSellStock(1,3)">买入</button></div>
+												<div class="col-sm-3"><button class="btn btn-success" onclick="gStock.gBuyOrSellStock(2,3)">卖出</button></div>
+											</div>
+										</td>
+									</tr>																																				
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>					
+			<div class="modal fade" id="modal-container-000005" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">赌一把</h4>
+							<h5>每次消耗0个时辰，每日限1次</h5>
+							<h5>小赌怡情，大赌伤身，强赌灰飞烟灭！</h5>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed table-hover table-bordered">
+								<tbody>
+									<tr>
+										<td><h5>押大小 <small class="text-warning">每次花费20钱</small></h5><p>有概率获得18888钱</p></td>
+										<td><button class="btn btn-block btn-success" onclick="gBet.gStartBet(1)">赌一次</button></td>
+									</tr>
+									<tr>
+										<td><h5>玩牌九 <small class="text-warning">每次花费200钱</small></h5><p>有概率获得99999钱</p></td>
+										<td><button class="btn btn-block btn-success" onclick="gBet.gStartBet(2)">赌一次</button></td>
+									</tr>									
+									<tr>
+										<td><h5>打麻将 <small class="text-warning">每次花费2000钱</small></h5><p>有概率获得288888钱</p></td>
+										<td><button class="btn btn-block btn-success" onclick="gBet.gStartBet(3)">赌一次</button></td>
+									</tr>																																				
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>
+			<div class="modal fade" id="modal-container-000006" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">车马排场</h4>
+							<h5>每次消耗0个时辰，每日限1次</h5>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed table-hover table-bordered">
+								<tbody>
+									<tr>
+										<td>
+											<h5>低端入门小毛驴  <small class="text-warning">购买价格：3606</small>  <small class="text-warning">出售价格：2524</small></h5>
+											<p>每天维护要50钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,1)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,1)">出售</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>经济适用国产马  <small class="text-warning">购买价格：8656</small>  <small class="text-warning">出售价格：6059</small></h5>
+											<p>每天维护要100钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,2)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,2)">出售</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>舒适进阶西域马  <small class="text-warning">购买价格：43283</small>  <small class="text-warning">出售价格：30298</small></h5>
+											<p>每天维护要500钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,3)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,3)">出售</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>高端商务双人轿  <small class="text-warning">购买价格：108208</small>  <small class="text-warning">出售价格：75745</small></h5>
+											<p>每天维护要1000钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,4)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,4)">出售</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>极致奢华四轮车  <small class="text-warning">购买价格：252486</small>  <small class="text-warning">出售价格：176740</small></h5>
+											<p>每天维护要2000钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,5)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,5)">出售</button>
+										</td>
+									</tr>																																					
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>
+			<div class="modal fade" id="modal-container-000007" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">置地购房</h4>
+							<h5>每次消耗0个时辰，每日限1次</h5>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed table-hover table-bordered">
+								<tbody>
+									<tr>
+										<td>
+											<h5>草屋一间，水田一亩  <small class="text-warning">购买价格：31669</small>  <small class="text-warning">出售价格：28502</small></h5>
+											<p>每天维护要10钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,6)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,6)">出售</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>竹林小筑，春色满园  <small class="text-warning">购买价格：88673</small>  <small class="text-warning">出售价格：79806</small></h5>
+											<p>每天维护要50钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,7)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,7)">出售</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>农家小院，十亩良田  <small class="text-warning">购买价格：190015</small>  <small class="text-warning">出售价格：171013</small></h5>
+											<p>每天维护要100钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,8)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,8)">出售</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>气派大院，幽深雅致  <small class="text-warning">购买价格：443369</small>  <small class="text-warning">出售价格：399032</small></h5>
+											<p>每天维护要300钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,9)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,9)">出售</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>豪宅华邸，贵气冲天  <small class="text-warning">购买价格：886739</small>  <small class="text-warning">出售价格：798065</small></h5>
+											<p>每天维护要1000钱</p></td>
+										<td>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(1,10)">购买</button>
+											<button class="btn btn-block btn-success" onclick="gHorseHouse.gBuyOrSellHH(2,10)">出售</button>
+										</td>
+									</tr>																																					
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>
+			<div class="modal fade" id="modal-container-000008" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">千里姻缘</h4>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed table-hover table-bordered">
+								<tbody>
+									<tr><td><span class="text-warning"> 茗霞：我喜欢体格强壮的男人！最讨厌病秧子了。</span></td><td><button class="btn btn-block btn-success btn-xs" id="gBtnGirl1" onclick="gGirl.gMeetGirl(1)">我想认识你一下</button></td></tr>
+									<tr><td><span class="text-warning"> 步摇：我希望另一半是个人人夸赞的正人君子。</span></td><td><button class="btn btn-block btn-success btn-xs" id="gBtnGirl2" onclick="gGirl.gMeetGirl(2)">我想认识你一下</button></td></tr>
+									<tr><td><span class="text-warning"> 闻笛：据说真正的好男儿都是朋友遍布武林，我希望她也是这样的人。</span></td><td><button class="btn btn-block btn-success btn-xs" id="gBtnGirl3" onclick="gGirl.gMeetGirl(3)">我想认识你一下</button></td></tr>
+									<tr><td><span class="text-warning"> 雨桐：嗨呀，我也不知道自己需要的是什么，总之穷鬼就别来找我了。</span></td><td><button class="btn btn-block btn-success btn-xs" id="gBtnGirl4" onclick="gGirl.gMeetGirl(4)">我想认识你一下</button></td></tr>
+									<tr><td><span class="text-warning"> 箫昳：女孩子不就是希望有个能遮风挡雨的温暖的家么。</span></td><td><button class="btn btn-block btn-success btn-xs" id="gBtnGirl5" onclick="gGirl.gMeetGirl(5)">我想认识你一下</button></td></tr>																																			
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>
+			<div class="modal fade" id="modal-container-000009" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">随机事件</h4>
+						</div>
+						<div class="modal-body">
+							<div class="jumbotron well">
+								<p id="gEventDescribeUI"></p>
+								<p><button class="btn btn-block btn-success" id="gEventBtn1" onclick="gRandomEvents.gEventSelect(1)"></button></p>
+								<p><button class="btn btn-block btn-success" id="gEventBtn2" onclick="gRandomEvents.gEventSelect(2)"></button></p>
+							</div>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>
+			<div class="modal fade" id="modal-container-0000010" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">排行榜</h4>
+							<h5>只记录前十分数</h5>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed table-hover table-bordered">
+								<thead>
+									<tr><th>名次</th><th>名字</th><th>得分</th></tr>
+								</thead>							
+								<tbody id="gRankListUI">																																		
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+					</div>	
+				</div>
+			</div>																
+		</div>
+	</div>
+</body>
+</html>
